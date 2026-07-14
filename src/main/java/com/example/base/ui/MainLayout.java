@@ -21,15 +21,16 @@ public final class MainLayout extends AppLayout {
     MainLayout() {
         setPrimarySection(Section.DRAWER);
         addToDrawer(createApplicationHeader(), createApplicationDrawer(), createApplicationFooter());
+        getStyle().set("background-color", "#ffffff");
     }
 
     private Component createApplicationHeader() {
         // TODO Replace with real application logo and name
-        var appLogo = new Avatar("My Application");
+        var appLogo = new Avatar("Her Budget Tracker");
         appLogo.addClassName("app-logo");
         appLogo.addThemeVariants(AvatarVariant.AURA_FILLED, AvatarVariant.XSMALL);
 
-        var appName = new Span("My Application");
+        var appName = new Span("Her Budget Tracker");
         appName.addClassName("app-name");
 
         var header = new HorizontalLayout(appLogo, appName);

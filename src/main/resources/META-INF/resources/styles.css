@@ -27,3 +27,7 @@ vaadin-side-nav:has(vaadin-side-nav-item:only-child)::after {
     min-width: 100%;
     white-space: normal;
 }
+
+vaadin-app-layout::part(content) {
+    background-color: #c3d2e1 !important;
+}
