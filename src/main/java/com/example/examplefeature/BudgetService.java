@@ -23,8 +23,8 @@ public class BudgetService {
     public void setBudget(double budget){
         this.budget=budget;
     }
-    public boolean closeToBudget(){
-        return getTotalCost()>=(.8*getBudget());
+    public int closeToBudget(){
+        return (int)(100*getTotalCost()/getBudget());
     }
 
     

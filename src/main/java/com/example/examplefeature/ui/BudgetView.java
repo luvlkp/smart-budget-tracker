@@ -32,7 +32,7 @@ public class BudgetView extends VerticalLayout{
         GridListDataView<Expense> dataView= grid.setItems(budgetService.getList());
         H2 budgetDisplay = new H2("Budget: $0");
         H2 totalCostDisplay = new H2("Total Spent: $0");
-        H2 nearBudget = new H2("At 80% of the budget: False");
+        H2 nearBudget = new H2("At 0% of the budget.");
         Button enterButton = new Button("Enter");
         Button enterBudgetButton = new Button("Enter");
         TextField descriptionField= new TextField("Description");
@@ -57,10 +57,7 @@ public class BudgetView extends VerticalLayout{
             categoryField.clear();
             costField.clear();
             totalCostDisplay.setText("Total Spent: $"+budgetService.getTotalCost());
-            if (budgetService.closeToBudget()==true)
-                nearBudget.setText("At 80% of the budget: True");
-            else
-                nearBudget.setText("At 80% of the budget: False");
+            nearBudget.setText("At "+budgetService.closeToBudget()+"% of the budget");
             filterCategoryField.setValue("");
 
         });
@@ -70,10 +67,7 @@ public class BudgetView extends VerticalLayout{
             budgetService.setBudget(budgetField.getValue());
             budgetDisplay.setText("Budget: $"+budgetService.getBudget());
             budgetField.clear();
-            if (budgetService.closeToBudget()==true)
-                nearBudget.setText("At 80% of the budget: True");
-            else
-                nearBudget.setText("At 80% of the budget: False");
+            nearBudget.setText("At "+budgetService.closeToBudget()+"% of the budget");
         });
 
         //Event when the category grid filter field is changed
