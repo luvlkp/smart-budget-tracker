@@ -68,6 +68,11 @@
             <artifactId>browserless-test-junit6</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.appreciated</groupId>
+            <artifactId>apexcharts</artifactId>
+            <version>23.0.1</version> 
+        </dependency>
     </dependencies>
     
     <build>

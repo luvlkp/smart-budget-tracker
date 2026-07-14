@@ -36,6 +36,6 @@ public class Expense {
     }
 
     public String toString(){
-        return category+": "+description+": "+price;
+        return category+": "+description+": "+price+":"+getDate();
     }
 }

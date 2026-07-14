@@ -10,9 +10,16 @@ import com.vaadin.flow.router.Route;
 import com.example.examplefeature.BudgetService;
 import com.example.examplefeature.Expense;
 import com.example.examplefeature.ExpenseGrid;
-
-
 import java.time.LocalDate;
+
+
+///import java.util.list;
+///import java.util.map;
+//import java.util.stream.Collectors;
+//import java.util.ArrayList;
+
+
+
 
 
 @Route("")
@@ -20,6 +27,7 @@ public class BudgetView extends VerticalLayout{
     private final BudgetService budgetService;
     public BudgetView(BudgetService budgetService){
         this.budgetService=budgetService;
+        //Creation of grids, list, fields, and buttons
         ExpenseGrid grid = new ExpenseGrid();
         GridListDataView<Expense> dataView= grid.setItems(budgetService.getList());
         H2 budgetDisplay = new H2("Budget: $0");
@@ -32,13 +40,15 @@ public class BudgetView extends VerticalLayout{
         NumberField budgetField= new NumberField("Budget");
         Select<String> categoryField= new Select<>();
         Select<String> filterCategoryField= new Select<>();
+
+        //Setting the Fields
         categoryField.setItems("Food", "Transportation", "Utilities", "Entertainment", "House");
         filterCategoryField.setItems("","Food", "Transportation", "Utilities", "Entertainment", "House");
         categoryField.setLabel("Category");
         categoryField.setPlaceholder("Select a category");
         filterCategoryField.setPlaceholder("Filter the grid");
 
-
+        //Event when the enter button is pressed
         enterButton.addClickListener(clickEvent->{
             Expense item = new Expense(descriptionField.getValue(),costField.getValue(),categoryField.getValue(), LocalDate.now());
             budgetService.addExpense(item);
@@ -54,6 +64,8 @@ public class BudgetView extends VerticalLayout{
             filterCategoryField.setValue("");
 
         });
+
+        //Event when the budget enter button is pressed
         enterBudgetButton.addClickListener(clickEvent->{
             budgetService.setBudget(budgetField.getValue());
             budgetDisplay.setText("Budget: $"+budgetService.getBudget());
@@ -63,6 +75,8 @@ public class BudgetView extends VerticalLayout{
             else
                 nearBudget.setText("At 80% of the budget: False");
         });
+
+        //Event when the category grid filter field is changed
         filterCategoryField.addValueChangeListener(ValueChangeEvent->{
             dataView.setFilter(expense->{
                 if (filterCategoryField.getValue()=="")
@@ -71,6 +85,13 @@ public class BudgetView extends VerticalLayout{
             });
 
         });
+
+        //Adds all the UI to the screen
         add(totalCostDisplay,budgetDisplay, nearBudget, budgetField, enterBudgetButton, descriptionField, costField, categoryField, enterButton, filterCategoryField, grid);
+        
+        
+        
     }
+    
+    
 }

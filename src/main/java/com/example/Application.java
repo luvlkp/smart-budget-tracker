@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.page.AppShellConfigurator;
 
+
 @SpringBootApplication
 @ComponentScan(basePackages = "com.example") 
 @StyleSheet(Aura.STYLESHEET)
