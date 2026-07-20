@@ -21,7 +21,7 @@ public final class MainLayout extends AppLayout {
     MainLayout() {
         setPrimarySection(Section.DRAWER);
         addToDrawer(createApplicationHeader(), createApplicationDrawer(), createApplicationFooter());
-        getStyle().set("background-color", "#ffffff");
+        //getStyle().set("background-color", "#ffffff");
     }
 
     private Component createApplicationHeader() {

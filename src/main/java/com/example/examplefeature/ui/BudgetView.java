@@ -85,7 +85,11 @@ public class BudgetView extends VerticalLayout{
             categoryField.clear();
             costField.clear();
             totalCostDisplay.setText("Total Spent: $"+budgetService.getTotalCost());
-            nearBudget.setText("At "+budgetService.closeToBudget()+"% of the budget");
+            if (budgetService.getBudget()>0)
+                if (budgetService.closeToBudget()>100)
+                    nearBudget.setText("Higher than the budget!!");
+                else
+                    nearBudget.setText("At "+budgetService.closeToBudget()+"% of the budget");
             filterCategoryField.setValue("");
 
         });
@@ -95,7 +99,11 @@ public class BudgetView extends VerticalLayout{
             budgetService.setBudget(budgetField.getValue());
             budgetDisplay.setText("Budget: $"+budgetService.getBudget());
             budgetField.clear();
-            nearBudget.setText("At "+budgetService.closeToBudget()+"% of the budget");
+            if (budgetService.getBudget()>0)
+                if (budgetService.closeToBudget()>100)
+                    nearBudget.setText("Higher than the budget!!");
+                else
+                    nearBudget.setText("At "+budgetService.closeToBudget()+"% of the budget");
         });
 
         //Event when the category grid filter field is changed

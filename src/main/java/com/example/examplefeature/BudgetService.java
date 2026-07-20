@@ -1,21 +1,26 @@
 package com.example.examplefeature;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class BudgetService {
-    private ArrayList<Expense> list= new ArrayList<>();
-    private double totalCost=0, budget=0;
-    public BudgetService(){
+    private final ExpenseRepository expenseRepository;
+    private double budget=0;
+
+    public BudgetService(ExpenseRepository expenseRepository){
+        this.expenseRepository=expenseRepository;
     }
+
     public double getTotalCost(){
-        return totalCost;
+        return expenseRepository.findAll().stream()
+            .mapToDouble(Expense::getPrice)
+            .sum();
     }
-    public ArrayList<Expense> getList(){
-        return list;
+    public List<Expense> getList(){
+        return expenseRepository.findAll();
     }
     public void addExpense(Expense item){
-        list.add(item);
-        totalCost+=item.getPrice();
+        expenseRepository.save(item);
     }
     public double getBudget(){
         return budget;
@@ -24,6 +29,8 @@ public class BudgetService {
         this.budget=budget;
     }
     public int closeToBudget(){
+        if (getBudget()==0)
+            return 0;
         return (int)(100*getTotalCost()/getBudget());
     }
 

@@ -8,15 +8,15 @@ import org.springframework.context.annotation.ComponentScan;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.page.AppShellConfigurator;
 
-
 @SpringBootApplication
 @ComponentScan(basePackages = "com.example") 
 @StyleSheet(Aura.STYLESHEET)
 @StyleSheet("styles.css") // Your custom styles
 public class Application implements AppShellConfigurator {
-
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
 }
+
+

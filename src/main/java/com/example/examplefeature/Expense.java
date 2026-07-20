@@ -1,10 +1,25 @@
 package com.example.examplefeature;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.time.LocalDate;
+
+@Entity
 public class Expense {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+
     private String description, category;
     private double price;
     private LocalDate date;
+
+    public Expense(){
+
+    }
+
     public Expense(String description, double price, String category, LocalDate date){
         this.description=description;
         this.category=category;
@@ -12,6 +27,9 @@ public class Expense {
         this.date=date;
     }
     //Getters for variables
+    public Long getId(){
+        return Id;
+    }
     public String getDescription(){
         return description;
     }
@@ -25,6 +43,9 @@ public class Expense {
         return price;
     }
     //Setters for variables
+    public void setId(Long Id){
+        this.Id=Id;
+    }
     public void setDescription(String description){
         this.description=description;
     }
