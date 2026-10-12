@@ -2,6 +2,10 @@
 
 - [ ] TODO Replace or update this README with instructions relevant to your application
 
+## Live Link
+
+https://smartbudgettracker-cgbzf2csajdbbybx.mexicocentral-01.azurewebsites.net/
+
 ## Project Structure
 
 This project has the following structure:
